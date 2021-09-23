@@ -9,7 +9,7 @@ setup(
   author_email = 'jnjnqy@gmail.com',
   url = 'https://github.com/sunshinejnjn/flask_kqmaps',
   download_url = 'https://github.com/sunshinejnjn/flask_kqmaps/archive/refs/tags/v0.4.tar.gz',
-  keywords = ['KQGIS', 'cangqiong', '苍穹', 'GIS', 'KQ', 'leaflet', 'webgis'],
+  keywords = ['KQGIS', 'cangqiong', '苍穹', 'GIS', 'KQ', 'leaflet', 'webgis', 'kqmaps', 'flask_kqmaps', 'flask-kqmaps', 'flask'],
   install_requires=[
           'flask',
       ],

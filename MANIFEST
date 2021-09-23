@@ -2,6 +2,7 @@
 CONTRIBUTORS.txt
 LICENSE.txt
 README.md
+setup.cfg
 setup.py
 flask_kqmaps\__init__.py
 flask_kqmaps\static\kqwebclient\leaflet\include-leaflet.js
