@@ -8,28 +8,40 @@ pip install flask_kqmaps
 Usage example:
 
 Import the module:
+
     from flask_kqmaps import KQMaps
 
 Initialize flask app with the extension:
+
     kqmaps=KQMaps()
     kqmaps.init_app(app)
 
 In page templates:
 - Put this at the end of the page "header" (or head block)
+
     {{ kqmap_init }}
 
 - Put this somewhere at the end of the "body" part (with other scripts):
+
     {{ kq_scripts }}
 
-- Put either {{ kq_easymaps }} or {{ kq_maps.SAMPLE_MAP }} to where you want the map to be shown on the page.
-    kq_easymaps would show any registered maps and kq_maps.MAP_NAME would show only the specific map named "SAMPLE_MAP".
+- Put either 
+
+    {{ kq_easymaps }}
+    
+  or 
+  
+    {{ kq_maps.SAMPLE_MAP }}
+  
+  to where you want the map to be shown on the page. kq_easymaps would show any registered maps and kq_maps.SAMPLE_MAP would show only the specific map named "SAMPLE_MAP".
 
 
 Generate and register a map with flask_kqmaps and render with flask:
+
     from flask_kqmaps import *
 
     #Instantiate a map object
-    pmap = GenKQMap(mapname, attributionControl=True, center=[32.05382, 118.77730], zoom=17, zoomControl=True)
+    pmap = GenKQMap("SAMPLE_MAP", attributionControl=True, center=[32.05382, 118.77730], zoom=17, zoomControl=True)
 
     #Add some base map layers
     pmap.add_layer(KQLayer(name="Basemap", ltype="tiandituTileLayer", id="vec", isbasemap=True,
@@ -63,6 +75,7 @@ Generate and register a map with flask_kqmaps and render with flask:
 
     #render with template
     return_page = make_response(render_template("page_template.html"))
+
 
 License:
     This software is licensed under GNU GPLv3. Please make your modifications under the same license and publish them openly.
