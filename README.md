@@ -22,7 +22,7 @@ In page templates:
     {{ kq_scripts }}
 
 - Put either {{ kq_easymaps }} or {{ kq_maps.SAMPLE_MAP }} to where you want the map to be shown on the page.
-    kq_easymaps would show any registered maps and kq_maps.MAP_NAME would show only the specific map named "SAMPLE_MAP".
+    kq_easymaps would show any registered maps and kq_maps.SAMPLE_MAP would show only the specific map named "SAMPLE_MAP".
 
 
 Generate and register a map with flask_kqmaps and render with flask:
