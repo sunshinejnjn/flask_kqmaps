@@ -1,0 +1,1 @@
+var icon_{{ icon.id }} = L.icon( {{icon.jsonoptions()}});
