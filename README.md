@@ -41,7 +41,7 @@ Generate and register a map with flask_kqmaps and render with flask:
     from flask_kqmaps import *
 
     #Instantiate a map object
-    pmap = GenKQMap(mapname, attributionControl=True, center=[32.05382, 118.77730], zoom=17, zoomControl=True)
+    pmap = GenKQMap("SAMPLE_MAP", attributionControl=True, center=[32.05382, 118.77730], zoom=17, zoomControl=True)
 
     #Add some base map layers
     pmap.add_layer(KQLayer(name="Basemap", ltype="tiandituTileLayer", id="vec", isbasemap=True,
