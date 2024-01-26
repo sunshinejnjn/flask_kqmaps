@@ -1,11 +1,11 @@
 
   {% for icon in kqmap.icons %}
-  {{ kqmap.icons[icon].html() }}
+  {{ kqmap.icons[icon].html()|safe }}
   {% endfor %}
 
 
   {% for layer in kqmap.layers %}
-  {{ kqmap.layers[layer].html() }}
+  {{ kqmap.layers[layer].html()|safe }}
   {% endfor %}
 
   var baseMaps = {
@@ -24,7 +24,7 @@
     {% endfor %}
   };
 
-  var {{ kqmap.name }} = L.map("{{ kqmap.name }}", {{ kqmap.jsonproperties }});
+  var {{ kqmap.name }} = L.map("{{ kqmap.name }}", {{ kqmap.jsonproperties|safe }});
 
   {% if ((kqmap.cursor is defined) and (kqmap.cursor != None) and (kqmap.cursor != '')) %}
   $('#{{ kqmap.name }}').css('cursor', '{{ kqmap.cursor }}');
@@ -72,7 +72,7 @@
   function doOnClick(latlon) {
     var lat = latlon.lat;
     var lon = latlon.lng;
-    {{ kqmap.onclick }}
+    {{ kqmap.onclick|safe }}
     }
 
   {% endif %}

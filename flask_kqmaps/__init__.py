@@ -37,7 +37,7 @@ class KQIcon(object):
         return flask.json.dumps(self.options)
 
     def html(self):
-        return flask.Markup(self.parent.parent.templates['iconjs'].render(icon=self))
+        return self.parent.parent.templates['iconjs'].render(icon=self)
 
 class KQLayer(object):
     def __init__(self, name, ltype, id = None, isbasemap=False, options = None):
@@ -59,7 +59,7 @@ class KQLayer(object):
     def jsonoptions(self):
         return flask.json.dumps(self.options)
     def html(self):
-        return flask.Markup(self.parent.parent.templates['layerjs'].render(layer=self))    
+        return self.parent.parent.templates['layerjs'].render(layer=self)
 
 class KQLayerGroup(KQLayer):
     def __init__(self, name, ltype="LG", id = None, isbasemap=False, options = None):
@@ -122,7 +122,7 @@ class KQLayerGroup(KQLayer):
     def html(self):
         js=list(self.markers.values()) + list(self.plines.values()) + list(self.polygons.values()) + list(self.imageTs.values()) + list(self.geojsons.values())
         self.js="\n".join(js)
-        return flask.Markup(self.parent.parent.templates['layergroupjs'].render(lg=self))        
+        return self.parent.parent.templates['layergroupjs'].render(lg=self)
 
 class KQMap(object):
     def __init__(self, name, width="100%", height="80vh", options=None, drawControl=False, data_url=None, onclick=None, cursor = None, **kwargs):
@@ -266,17 +266,17 @@ class KQMaps(object):
         return resp
 
     def _get_easymaps_markup(self):
-        return flask.Markup(self.templates['kqmap'].render(maps=self.maps,
-                                                          config=self.config,
-                                                          include_tags=True))
+        return self.templates['kqmap'].render(maps=self.maps,
+                                            config=self.config,
+                                            include_tags=True)
 
     def _get_maps_markup(self):
-        return {n: flask.Markup(c.html_div()) for n, c in self.maps.items()}
+        return {n: c.html_div() for n, c in self.maps.items()}
 
     @staticmethod
     def _get_static_init():
         return flask.send_file(pkg_resources.resource_stream("flask_kqmaps", "static/maps.init.js"),
-                               attachment_filename="maps.init.js")
+                            attachment_filename="maps.init.js")
 
     def _get_init_markup(self):
         if "KQ_RELEASE_JS" in self.config:
@@ -287,13 +287,13 @@ class KQMaps(object):
             kq_es_js = self.config['KQ_ES_JS']
         else:
             kq_es_js = None
-        return flask.Markup(self.templates['init'].render(maps=self.maps,
-                                                          config=self.config,
-                                                          include_tags=True, kq_release_js=kq_release_js, kq_es_js=kq_es_js))
+        return self.templates['init'].render(maps=self.maps,
+                                                    config=self.config,
+                                                    include_tags=True, kq_release_js=kq_release_js, kq_es_js=kq_es_js)
     def _get_scripts_markup(self):
-        return flask.Markup(self.templates['script'].render(maps=self.maps,
-                                                          config=self.config,
-                                                          include_tags=True))
+        return self.templates['script'].render(maps=self.maps,
+                                                    config=self.config,
+                                                    include_tags=True)
 
     def register(self, map):
         # type: (KQMap) -> bool

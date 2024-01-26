@@ -19,21 +19,23 @@ Initialize flask app with the extension:
 In page templates:
 - Put this at the end of the page "header" (or head block)
 
-    {{ kqmap_init }}
+    {{ kqmap_init|safe }}
 
 - Put this somewhere at the end of the "body" part (with other scripts):
 
-    {{ kq_scripts }}
+    {{ kq_scripts|safe }}
 
 - Put either 
 
-    {{ kq_easymaps }}
+    {{ kq_easymaps|safe }}
     
   or 
   
-    {{ kq_maps.SAMPLE_MAP }}
+    {{ kq_maps.SAMPLE_MAP|safe }}
   
   to where you want the map to be shown on the page. kq_easymaps would show any registered maps and kq_maps.SAMPLE_MAP would show only the specific map named "SAMPLE_MAP".
+
+**** Remember the safe marker as flask dropped Markup since version 3.x and the safe markup has to be done in jinjia2.****
 
 
 Generate and register a map with flask_kqmaps and render with flask:

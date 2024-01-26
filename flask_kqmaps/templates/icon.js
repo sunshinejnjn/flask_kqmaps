@@ -1,1 +1,1 @@
-var icon_{{ icon.id }} = L.icon( {{icon.jsonoptions()}});
+var icon_{{ icon.id }} = L.icon( {{ icon.jsonoptions()|safe }});
